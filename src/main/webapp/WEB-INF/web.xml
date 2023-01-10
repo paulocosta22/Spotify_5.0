@@ -1,0 +1,24 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <data-source>
+        <name>java:global/PostgresDB</name>
+        <class-name>org.postgresql.ds.PGConnectionPoolDataSource</class-name>
+        <url>jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}</url>
+        <user>${DB_USER}</user>
+        <password>${DB_PASS}</password>
+        <property>
+            <name>fish.payara.slow-query-threshold-in-seconds</name>
+            <value>5</value>
+        </property>
+        <property>
+            <name>fish.payara.log-jdbc-calls</name>
+            <value>true</value>
+        </property>
+        <max-pool-size>50</max-pool-size>
+        <min-pool-size>10</min-pool-size>
+    </data-source>
+
+</web-app>
